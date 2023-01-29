@@ -1,5 +1,5 @@
 \input{~/macro.tex}
-\usepackage{nicematrix}
+\usepackage{nicematrix,nccmath}
 \title{物性物理学}
 \author{20B01392 松本侑真}
 \date{\today}
@@ -77,10 +77,10 @@
 と表される。したがって運動方程式は
 \begin{equation}
 	\dv{\bm{v}}{t} =
-	\begin{pNiceMatrix}[baseline=2]
-		\displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_x}{k_x}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_y}{k_x}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_z}{k_x}) \\
-		\displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_x}{k_y}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_y}{k_y}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_z}{k_y}) \\
-		\displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_x}{k_z}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_y}{k_z}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_z}{k_z})
+	\begin{pNiceMatrix}
+		\medmath{\frac{1}{\hbar^2}\qty(\pdv{E}{k_x}{k_x})} & \medmath{\frac{1}{\hbar^2}\qty(\pdv{E}{k_y}{k_x})} & \medmath{\frac{1}{\hbar^2}\qty(\pdv{E}{k_z}{k_x})} \\
+		\medmath{\frac{1}{\hbar^2}\qty(\pdv{E}{k_x}{k_y})} & \medmath{\frac{1}{\hbar^2}\qty(\pdv{E}{k_y}{k_y})} & \medmath{\frac{1}{\hbar^2}\qty(\pdv{E}{k_z}{k_y})} \\
+		\medmath{\frac{1}{\hbar^2}\qty(\pdv{E}{k_x}{k_z})} & \medmath{\frac{1}{\hbar^2}\qty(\pdv{E}{k_y}{k_z})} & \medmath{\frac{1}{\hbar^2}\qty(\pdv{E}{k_z}{k_z})}
 	\end{pNiceMatrix}
 	\bm{F}
 \end{equation}
@@ -105,6 +105,22 @@ Drudeモデルで導かれる電流は、伝導度$\sigma$、抵抗率$\rho$と�
 と表される。
 
 \section{Boltzmann方程式：電子の速度分布を考慮して計算する}
+古典的モデルであるDruleモデルでは、全ての電子が同じ速度$\bm{v}_d$で固体中を移動していると考えたが、
+量子論では電子の速度は波数$\bm{k}$に依存し、速度分布が生じる。その分布を考慮するのがBoltzmann方程式である。
+
+まず、時刻$t$における電子の個数分布関数を$f(\bm{r},\,\bm{k},\,t)$と置く。（電子の場合はフェルミオンなので、引数をエネルギーにすると$f$はFermi分布関数となる。）
+固体中の電子の速度分布は格子振動や不純物などで変化する。このような現象が電子の散乱(scattering)である。電子が散乱されることによる分布関数の変化は、
+\begin{equation}
+	\dd{f} = \pdv{f}{t}\dd{t} + \sum_{\alpha=x,y,z}\pdv{f}{\alpha}\dd{\alpha} + \sum_{i=x,y,z}\pdv{f}{k_i}\dd{k}
+	= \pdv{f}{t}\dd{t} + \qty(\grad{f})\vdot\dd{\bm{r}} + (\grad_{\bm{k}}f)\vdot\dd{\bm{k}} = \qty(\pdv{f}{t})_{\text{scat}}\dd{t}
+\end{equation}
+と表される。なお、最右辺の式は、電子の散乱が微小時間$\dd{t}$の間に引き起こされるときの分布関数の変化を形式的に表したものである。
+以上より得られる以下の式をBoltzmann方程式と呼ぶ：
+\begin{equation}
+	\pdv{f}{t} + \qty(\grad{f})\vdot\dv{\bm{r}}{t} + (\grad_{\bm{k}}f)\vdot\dv{\bm{k}}{t} = \qty(\pdv{f}{t})_{\text{scat}}\;。
+\end{equation}
+
+
 
 \section{温度勾配による電流と熱流}
 
