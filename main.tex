@@ -10,7 +10,7 @@
 \end{abstract}
 \tableofcontents
 \newpage
-\section{固体中の電子}
+\section{電子の振る舞いと加速定理}
 まず、自由電子の場合、電子が従う方程式は
 \begin{equation}
 	\hat{H}\psi = -\frac{\hbar^2}{2m}\qty(\pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z})\psi = E\psi
@@ -86,8 +86,25 @@
 \end{equation}
 となる。
 
+\section{Drudeモデル：微視的な電流を記述する古典的モデル}
+Drudeモデルとは、有効質量が$m^*$、電荷が$-e$である場合の固体中の電子の電場$\bm{E}$の下における運動を記述するモデルである：
+\begin{equation}
+	m^*\dv{\bm{v}_e}{t} = -e\bm{E} -m^*\frac{\bm{v}_{e}}{\tau}\;。
+\end{equation}
+ここで、右辺第二項は不純物や格子振動による抵抗力を表す。抵抗力は電子の速度$\bm{v}_e$と有効質量に比例する。
+また、$\tau$を時間の次元を持つ比例定数（緩和時間）として導入した。定常状態$\dv*{\bm{v}_d}{t}=0$では、方程式は次のように解くことができる：
+\begin{equation}
+	\bm{v}_d = -\frac{e\tau}{m^*}\bm{E} = -\mu\bm{E}\;。
+\end{equation}
+このときの速度$\bm{v}_{d}$をドリフト速度と呼ぶ。$\mu$を移動度(mobility)と呼び、固体中の電子の動きやすさを表す物理量である。
 
-\section{Boltzmann方程式の導出}
+Drudeモデルで導かれる電流は、伝導度$\sigma$、抵抗率$\rho$とすると
+\begin{equation}
+	\bm{j} = -ne\bm{v}_d = ne\frac{e\tau}{m^*}\bm{E} = \frac{ne^2\tau}{m^*}\bm{E} = \sigma\bm{E} = \frac{1}{\rho}\bm{E}
+\end{equation}
+と表される。
+
+\section{Boltzmann方程式：電子の速度分布を考慮して計算する}
 
 \section{温度勾配による電流と熱流}
 
