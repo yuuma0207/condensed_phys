@@ -1,4 +1,5 @@
 \input{~/macro.tex}
+\usepackage{nicematrix}
 \title{物性物理学}
 \author{20B01392 松本侑真}
 \date{\today}
@@ -9,6 +10,85 @@
 \end{abstract}
 \tableofcontents
 \newpage
+\section{固体中の電子}
+まず、自由電子の場合、電子が従う方程式は
+\begin{equation}
+	\hat{H}\psi = -\frac{\hbar^2}{2m}\qty(\pdv[2]{x} + \pdv[2]{y} + \pdv[2]{z})\psi = E\psi
+\end{equation}
+である。この解として、
+\begin{align}
+	\psi_{\bm{k}}(\bm{r}) & = \frac{1}{\sqrt{V}}e^{i\bm{k}\vdot\bm{r}} = \frac{1}{\sqrt{V}}e^{i(k_xx + k_yy + k_zz)}                                                         \\
+	E(\bm{k})             & = \frac{\hbar^2k^2}{2m}\quad\qty(\hat{\bm{P}}\psi = -i\hbar\grad{\psi} = -i\hbar\grad\frac{1}{\sqrt{V}}e^{i\bm{k}\vdot\bm{r}} = \hbar\bm{k}\psi)
+\end{align}
+を得る。また、一般に電子を物質波と見たときのエネルギーは
+\begin{equation}
+	E(\bm{k}) = h\nu(\bm{k}) = \hbar\omega(\bm{k})
+\end{equation}
+である。したがって、群速度（実際に観測される波の速度）は
+\begin{equation}
+	v_{g} = \pdv{\omega}{k} = \frac{1}{\hbar}\pdv{E}{k}\implies \bm{v}_g = \frac{1}{\hbar}\grad_{\bm{k}}E
+\end{equation}
+と表すことができる。
+\subsection{加速定理}
+加速定理とは、外力$\bm{F}$が波束に加わった際の変化を表す定理である。系には仕事が加わるため、エネルギー変化は
+\begin{equation}
+	\varDelta{}E = \bm{F}\vdot\bm{v}_g\varDelta{}t = \frac{\bm{F}}{\hbar}\grad_{\bm{k}}E(\bm{k})\varDelta{}t
+\end{equation}
+となる。一方で、
+\begin{equation}
+	\varDelta{}E = \pdv{E}{k_x}\varDelta{}k_x + \pdv{E}{k_y}\varDelta{}k_y + \pdv{E}{k_z}\varDelta{}k_z = \grad_{\bm{k}}{E}\vdot\varDelta\bm{k}
+\end{equation}
+より、
+\begin{equation}
+	\grad_{\bm{k}}{E}\vdot\varDelta\bm{k} = \frac{\bm{F}}{\hbar}\grad_{\bm{k}}E(\bm{k})\varDelta{}t
+\end{equation}
+となる。すなわち、
+\begin{equation}
+	\dv{k}{t} = \frac{\bm{F}}{\hbar}
+\end{equation}
+となる。これが加速定理である。この結果は、運動量が$\bm{P} = \hbar\bm{k}$と表されるため、
+\begin{equation}
+	\varDelta\bm{P} = \int\hbar\dd{\bm{k}} = \int \bm{F}\dd{t}
+\end{equation}
+となることを再現している。
+\subsubsection*{自由電子の場合}
+自由電子の場合に加速定理を適用して、$\bm{P} = m\bm{v}$を再現することを見る。
+\begin{equation}
+	\bm{v} = \bm{v}_g = \frac{1}{\hbar}\grad_{\bm{k}}{E} = \frac{\hbar\bm{k}}{m} \iff m\bm{v} = \hbar\bm{k} = \bm{P}
+\end{equation}
+となる。
+\subsubsection*{一般の場合}
+より一般には加速定理から運動方程式が成立することがわかる。まずは簡単のために一次元で考えると、
+\begin{equation}
+	\dv{v_g}{t} = \frac{1}{\hbar}\dv{t}\qty(\dv{E}{k}) = \frac{1}{\hbar}\qty(\dv[2]{E}{k})\dv{k}{t} = \frac{1}{\hbar^2}\qty(\dv[2]{E}{k})F
+\end{equation}
+となる。したがって、有効質量$m^*$を用いると、運動方程式
+\begin{equation}
+	m^*\dv{v_g}{t} = F,\quad{}m^* = \frac{1}{\hbar^2}\qty(\dv[2]{E}{k})^{-1}
+\end{equation}
+を得る。3次元の場合は以下のように拡張される：
+\begin{equation}
+	\dv{v_i}{t} = \frac{1}{\hbar}\dv{t}\qty(\dv{E}{k_i}) = \frac{1}{\hbar}\sum_{j}\qty(\pdv{}{k_i}{k_j}E)\dv{k_j}{t} = \frac{1}{\hbar^2}\sum_{j}\qty(\pdv{E}{k_i}{k_j})F_j\;。
+\end{equation}
+したがって、有効質量は$3\times3$行列（テンソル）となり、
+\begin{equation}
+	\qty(\frac{1}{m^*})_{ij} = \frac{1}{\hbar^2}\qty(\pdv{E}{k_j}{k_i})
+\end{equation}
+と表される。したがって運動方程式は
+\begin{equation}
+	\dv{\bm{v}}{t} =
+	\begin{pNiceMatrix}[baseline=2]
+		\displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_x}{k_x}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_y}{k_x}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_z}{k_x}) \\
+		\displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_x}{k_y}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_y}{k_y}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_z}{k_y}) \\
+		\displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_x}{k_z}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_y}{k_z}) & \displaystyle\frac{1}{\hbar^2}\qty(\pdv{E}{k_z}{k_z})
+	\end{pNiceMatrix}
+	\bm{F}
+\end{equation}
+となる。
 
+
+\section{Boltzmann方程式の導出}
+
+\section{温度勾配による電流と熱流}
 
 \end{document}
