@@ -119,6 +119,73 @@ Drudeモデルで導かれる電流は、伝導度$\sigma$、抵抗率$\rho$と�
 \begin{equation}
 	\pdv{f}{t} + \qty(\grad{f})\vdot\dv{\bm{r}}{t} + (\grad_{\bm{k}}f)\vdot\dv{\bm{k}}{t} = \qty(\pdv{f}{t})_{\text{scat}}\;。
 \end{equation}
+また、電子の散乱は、電場が存在しない場合の平衡状態$f_0$へと分布関数$f$を戻そうとする働きがあると考える。その緩和時間を$\tau$とすると
+\begin{equation}
+	\qty(\pdv{f}{t})_{\text{scat}} = \frac{f_0-f}{\tau}
+\end{equation}
+と表される。
+
+\subsection{電気伝導率について}
+自由電子の電気伝導率をBoltzmann方程式を用いて導出する。
+自由電子モデルでは、電子は空間一様分布をしているため、
+分布関数は$\bm{r}$に依存しない：
+\begin{equation}
+	\grad{f} = 0\;。
+\end{equation}
+また、加える電場$\bm{E}$は時間に対して一定であるため、時間に対して定常状態となる：
+\begin{equation}
+	\pdv{f}{t} = 0\;。
+\end{equation}
+また、$\dv*{\bm{k}}{t} = \bm{F}/\hbar = -e\bm{E}/\hbar$であるため、Boltzmann方程式は
+\begin{align}
+	f(\bm{k}) = f_0(\bm{k}) + \frac{e\tau}{\hbar}\bm{E}\vdot\qty(\grad_k{f(\bm{k})})
+	 & = f_0(\bm{k}) + \frac{e\tau}{\hbar}\bm{E}\vdot\qty(\grad_{\bm{k}}E)\dv{f}{\mathcal{E}} \notag \\
+	 & = f_0(\bm{k}) + \frac{e\tau\hbar^2}{\hbar{}m^*}\bm{k}\vdot{\bm{E}}\dv{f}{\mathcal{E}}
+\end{align}
+となる。なお、$\bm{E}$が十分に小さく、Taylor近似が成立していると仮定すると、
+\begin{equation}
+	f(\bm{k}) =  f_0(\bm{k}) + \frac{e\tau}{\hbar}\bm{E}\vdot\qty(\grad_k{f_0(\bm{k})}) + \order{\bm{E}^2} \sim f_0\qty(\bm{k} + \frac{e\tau}{\hbar}\bm{E})
+\end{equation}
+と近似することもできる。こうして求まった分布関数を用いると、電流密度$\bm{j}$はスピン自由度と、波数空間で占める体積$1/(2\pi^3)$を考慮して
+\begin{equation}
+	\bm{j} = \frac{2}{(2\pi)^3}\int \dd{\bm{k}} (-e\bm{v}(\bm{k}))f(\bm{k})
+\end{equation}
+と求まる。\footnote{周期境界条件では$kL = 2n\pi$であるため、波数空間内で1つの$\bm{k}$が占める体積は$V/(2\pi)^3$である。}
+自由電子の速度ベクトルは${\hbar\bm{k}}/{m^*}$と表されるため、$x$方向のみに電場が印加しているとすると、
+\begin{equation}
+	j_x = -\frac{2}{(2\pi)^3}\int \dd{\bm{k}} \qty(e\frac{\hbar{}k_x}{m^*})\qty(f_0(\bm{k}) + \frac{e\tau\hbar{}k_xE_x}{m^*}\dv{f}{\mathcal{E}})
+\end{equation}
+となる。
+しかし、$f_0$は平衡状態であり、$\bm{k}$に関する偶関数となっていることに注意すると、$\bm{j}=0$となってしまう。
+したがって、
+\begin{equation}
+	j_x = -\frac{2}{(2\pi)^3}\int \dd{\bm{k}} \qty(e\frac{\hbar{}k_x}{m^*})\frac{e\tau\hbar{}k_xE_x}{m^*}\dv{f}{\mathcal{E}}
+	= -\frac{2e^2\tau\hbar^2}{(2\pi)^3{m^*}^2}E_x\int4\pi{}k^2\dd{k}k_x^2\dv{f}{\mathcal{E}}
+\end{equation}
+と変形できる。$k_x=k_y=k_z$を仮定すると、$k_x^2 = k^2/3$となり、
+\begin{equation}
+	\mathcal{E} = \frac{\hbar^2k^2}{2m^*} \implies 2k\dd{k} = \frac{2m^*}{\hbar^2}\dd{\mathcal{E}} \implies \dd{k} = \frac{2m^*}{\hbar^2}\qty(\frac{2m^*\mathcal{E}}{\hbar^2})^{-1/2}\dd{\mathcal{E}}
+\end{equation}
+を用いると、
+\begin{equation}
+	j_x = -\frac{2e^2\tau\hbar^2}{(2\pi)^3{m^*}^2}E_x\int\frac{4}{3}\pi{}\qty(\frac{2m^*\mathcal{E}}{\hbar^2})^{3/2}\frac{2m^*}{\hbar^2}\dd{\mathcal{E}}\dv{f}{\mathcal{E}}
+	= -\frac{2e^2\tau\hbar^2}{(2\pi)^3{m^*}^2}E_x\int\frac{4}{3}\pi{}\qty(\frac{2m^*}{\hbar^2})^{5/2}\mathcal{E}^{3/2}\dd{\mathcal{E}}\dv{f}{\mathcal{E}}
+\end{equation}
+となる。さらに、$f$はフェルミ分布関数であるため、$\dv*{f}{\mathcal{E}} \sim -\delta(\mathcal{E}-\mathcal{E}_{F})$が成立し、
+\begin{equation}
+	j_x = \frac{2e^2\tau\hbar^2}{(2\pi)^3{m^*}^2}E_x\int\frac{2}{3}\pi{}\qty(\frac{2m^*}{\hbar^2})^{5/2}\mathcal{E}^{3/2}\dd{E}\delta(\mathcal{E}-\mathcal{E}_F)
+	= \frac{e^2\tau}{3\pi^2{m^*}}\qty(\frac{2m^*}{\hbar^2})^{3/2}\mathcal{E}_F^{3/2}E_x
+\end{equation}
+となる。フェルミエネルギー$\mathcal{E}_F$は、全粒子数$n$を用いて
+\begin{equation}
+	\mathcal{E}_F = \frac{\hbar^2}{2m^*}(3\pi^2n)^{2/3} = \frac{\hbar^2k_{F}^2}{2m^*}
+\end{equation}
+と表されるため、
+\begin{equation}
+	j_x = \frac{e^2\tau{}n}{m^*}E_x \implies \sigma = \frac{e^2\tau{}n}{m^*}
+\end{equation}
+を得る。この結果は古典的なDrudeモデルで得られる結果と一致する。
+
 
 
 

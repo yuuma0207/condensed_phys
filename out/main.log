@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  29 JAN 2023 21:57
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  31 JAN 2023 10:25
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1354,17 +1354,19 @@ LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
 (Font)              scaled to size 6.47278pt on input line 115.
 LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
 (Font)              scaled to size 4.62341pt on input line 115.
-[4] (out/main.aux)
+LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
+(Font)              scaled to size 5.5481pt on input line 153.
+[4] [5] (out/main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 75942CC2FAB60D32BB5A27FFE409F0CB;905.
+(rerunfilecheck)             Checksum: EA64D075EE3CBF4696E11CB2BF136EC1;1034.
  ) 
 Here is how much of TeX's memory you used:
- 40535 strings out of 475422
- 853028 string characters out of 5788032
+ 40537 strings out of 475422
+ 853052 string characters out of 5788032
  1327910 words of memory out of 5000000
- 61693 multiletter control sequences out of 15000+600000
- 522483 words of font info for 135 fonts, out of 8000000 for 9000
+ 61695 multiletter control sequences out of 15000+600000
+ 522605 words of font info for 136 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  89i,16n,83p,472b,1260s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/main.dvi (4 pages, 27580 bytes).
+Output written on out/main.dvi (5 pages, 37716 bytes).
