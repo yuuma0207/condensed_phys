@@ -1,184 +1,186 @@
-\documentclass[a4paper,5pt,uplatex]{jsarticle}
+\input{~/macro.tex}
 
-\usepackage[dvipdfmx]{graphicx,xcolor}% ドライバ指定
-\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry} % 余白設定
-
-\usepackage{here, subfig} % 画像
-\graphicspath{{./pic/}}
-
-\usepackage{docmute} % ファイル分割用
-
-% 表関連のパッケージ
-\usepackage{booktabs}
-\usepackage{multirow}
-\usepackage{longtable}
-\usepackage{arydshln} % 表で破線を使うため
-\usepackage{multicol}
-% longtableをusepackageする場合は順番が重要らしいです。longtableとarydshlnの順番逆にしたらエラーはく（コンパイルはできるが…）
-
-% 数式関連
-\usepackage{amsmath,amsfonts,amssymb,mathtools,amsthm}
-
-\usepackage{empheq} % 連立方程式をきれいに書いてくれる
-\usepackage{setspace} % 行間を変えることができる。行列に用いれば良い
-\usepackage{bm}
-\usepackage{physics}
-\usepackage[version=3]{mhchem}
-\usepackage[separate-uncertainty]{siunitx}
-%\usepackage{txfonts} % 行列のかっこの形に影響あり
-
-\usepackage{enumitem} % enumium環境いじるため
-\renewcommand{\labelenumi}{\theenumi.}
-\renewcommand{\theenumi}{\Alph{enumi}}
-
-% ------------ url関係
-\usepackage{url}
-\usepackage[dvipdfmx]{hyperref}
-\hypersetup{
-	colorlinks=true,
-	citecolor=blue,
-	linkcolor=red,
-	urlcolor=blue
-}
-\usepackage{pxjahyper}
-% ---------
-\usepackage{otf} % ローマ数字
-\usepackage{arydshln}% 表のダッシュを使う
-
-% 斜めのパラレル記号
-\newcommand{\varParallel}
-{\def\@varParallel{\;/\kern-.2em /\;}%
-	\mathchoice%
-	{\@varParallel}%
-	{\textstyle\@varParallel}%
-	{\scriptscriptstyle\@varParallel}%
-	{\scriptscriptstyle\@varParallel}
-}
-
-% ローマ数字のコマンド化
-\newcounter{num}
-\newcommand{\Rnum}[1]{\setcounter{num}{#1} (\Roman{num})}
-\newcommand{\rnum}[1]{\setcounter{num}{#1} (\roman{num})}
-
-% ベクトルコマンド
-\renewcommand{\v}[1]{\bm{#1}}
-
-% サブセクションの数字
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-
-% 目次の深さ指定
-%\setcounter{tocdepth}{1}
-
-
-% 数式番号の変更
-\makeatletter
-\@addtoreset{equation}{section}
-\def\theequation{\thesection.\arabic{equation}}% renewcommand でもOK 数式番号を1.3みたいな感じに、章.何番目 と変更
-\makeatother
-
-% -------------------
-% 作図
-\usepackage{tikz}
-\usetikzlibrary{intersections, calc, arrows.meta}
-
-% -------------------
-% 定理環境付近
-\usepackage{tcolorbox} % 色付きの囲み
-\tcbuselibrary{breakable, skins, theorems}
-\usepackage{ascmac} % 囲み \begin{itembox}ができる。
-
-% ------ 新スタイル設定
-\newtheoremstyle{mystyle}%    % スタイル名
-{}%                       % 上部スペース
-{}%                       % 下部スペース
-{\normalfont}%           % 本文フォント
-{}%                       % インデント量
-{\bf}%                   % 見出しフォント
-{}%                       % 見出し後の句読点，'.'
-{\newline}%              % 見出し後のスペース, ' ' or \newline
-{\underline{\thmname{#1}\thmnumber{#2}\thmnote{（#3）}}}%
-%見出しの書式（can be left empty, meaning 'normal'）
-\theoremstyle{mystyle} % スタイルの適用
-
-\newtheorem{theorem}{定理}[section]
-\newtheorem{yousei}{要請}
-
-\newtheorem{mondai}{問題}
-\renewcommand{\themondai}{} % 番号なくすため
-
-\newtheorem{kaitou}{解答}
-\renewcommand{\thekaitou}{}
-
-\newtheorem{teigi}{定義}
-\renewcommand{\theteigi}{}
-\newtheorem{lemma}{補題}[section]
-\renewcommand{\proofname}{証明}
-
-% ------------proof環境をいじる
-\makeatletter %use at mark
-\renewenvironment{proof}[1][\proofname]{\par
-	\pushQED{\qed}%
-	\normalfont \topsep6\p@\@plus6\p@\relax
-	\trivlist
-	\item[\hskip\labelsep
-	            \itshape
-	            {\bf\underline{#1}}]\ignorespaces
-	% {\bf\underline{#1}\@addpunct{.}}]\ignorespaces % ピリオドあり
-}{%
-	\popQED\endtrivlist\@endperfalse
-}
-\makeatother %end at mark
-
-% ----------
-
-% プログラムコードの挿入
-\usepackage{listings, jlisting}
-
-\lstset{
-	%プログラム言語(複数の言語に対応，C,C++も可)
-	language = {C},
-	%背景色と透過度
-	backgroundcolor={\color[gray]{.90}},
-	%枠外に行った時の自動改行
-	breaklines = true,
-	%自動改行後のインデント量(デフォルトでは20[pt])
-	breakindent = 10pt,
-	%標準の書体
-	basicstyle = {\ttfamily\scriptsize},
-	%コメントの書体
-	commentstyle = {\itshape \color[rgb]{0,0.5,0}},
-	%関数名等の色の設定
-	classoffset = 0,
-	%キーワード(int, ifなど)の書体
-	keywordstyle = {\bfseries \color[rgb]{1,0,0}},
-	%""で囲まれたなどの"文字"の書体
-	stringstyle = {\ttfamily \color[rgb]{0,0,1}},
-	%枠 "t"は上に線を記載, "T"は上に二重線を記載
-	%他オプション: leftline, topline, bottomline, lines, single, shadowbox
-	frame = tbrl,
-	%frameまでの間隔(行番号とプログラムの間)
-	framesep = 5pt,
-	%行番号の位置
-	numbers = left,
-	%行番号の間隔
-	stepnumber = 1,
-	%行番号の書体
-	numberstyle = \tiny,
-	%タブの大きさ
-	tabsize = 4,
-	%キャプションの場所("tb"ならば上下両方に記載)
-	captionpos = t
-}
-\title{}
-\author{20B01392 松本侑真}
-\date{\today}
 \begin{document}
-\maketitle
-\begin{abstract}
+加速定理$\dv{k}{t} = F/\hbar$は、エネルギー変化を$\bm{F}\vdot\bm{v}_{g}\varDelta{}t = \grad_{\bm{k}}E\vdot\varDelta\bm{k}$であらわす。
+有効質量方程式は以下
+\begin{equation}
+	\dv{v_g}{t} = \frac{1}{\hbar}\dv{t}\dv{\mathcal{E}}{k} = \frac{1}{\hbar}\dv{k}{t}\dv[2]{\mathcal{E}}{k} = \frac{F}{\hbar^2}\dv[2]{\mathcal{E}}{k}
+\end{equation}
+Drudeモデル
+\begin{equation}
+	m^*\dv{\bm{v}}{t} = q(\bm{E}+\bm{v}\cross\bm{B}) - \frac{m\bm{v}}{\tau}
+\end{equation}
+Boltzmann方程式を用いると、電流の模型は以下のようになる：
+\begin{equation}
+	f(\bm{k}) =  f_0(\bm{k}) + \frac{e\tau}{\hbar}\bm{E}\vdot\qty(\grad_k{f_0(\bm{k})}) + \order{\bm{E}^2} \sim f_0\qty(\bm{k} + \frac{e\tau}{\hbar}\bm{E})
+\end{equation}
+\begin{equation}
+	\bm{j} = \frac{2}{(2\pi)^3}\int \dd{\bm{k}} (-e\bm{v}(\bm{k}))f(\bm{k})
+\end{equation}
+自由電子モデルでは、電子は空間一様分布をしているため、分布関数は$\bm{r}$に依存しないこと$\grad{f} = 0$に注意。
+自由電子の速度ベクトルは${\hbar\bm{k}}/{m^*}$と表されるため、$x$方向のみに電場が印加しているとすると、
+\begin{equation}
+	j_x = -\frac{2}{(2\pi)^3}\int \dd{\bm{k}} \qty(e\frac{\hbar{}k_x}{m^*})\qty(f_0(\bm{k}) + \frac{e\tau\hbar{}k_xE_x}{m^*}\dv{f}{\mathcal{E}})
+\end{equation}
+となる。
+しかし、$f_0$は平衡状態であり、$\bm{k}$に関する偶関数となっていることに注意すると、$\bm{j}=0$となってしまう。
+したがって、
+\begin{equation}
+	j_x = -\frac{2}{(2\pi)^3}\int \dd{\bm{k}} \qty(e\frac{\hbar{}k_x}{m^*})\frac{e\tau\hbar{}k_xE_x}{m^*}\dv{f}{\mathcal{E}}
+	= -\frac{2e^2\tau\hbar^2}{(2\pi)^3{m^*}^2}E_x\int4\pi{}k^2\dd{k}k_x^2\dv{f}{\mathcal{E}}
+\end{equation}
+と変形できる。$k_x=k_y=k_z$を仮定すると、$k_x^2 = k^2/3$となり、
+\begin{equation}
+	\mathcal{E} = \frac{\hbar^2k^2}{2m^*} \implies 2k\dd{k} = \frac{2m^*}{\hbar^2}\dd{\mathcal{E}} \implies \dd{k} = \frac{2m^*}{\hbar^2}\qty(\frac{2m^*\mathcal{E}}{\hbar^2})^{-1/2}\dd{\mathcal{E}}
+\end{equation}
+を用いると、
+\begin{equation}
+	j_x = -\frac{2e^2\tau\hbar^2}{(2\pi)^3{m^*}^2}E_x\int\frac{4}{3}\pi{}\qty(\frac{2m^*\mathcal{E}}{\hbar^2})^{3/2}\frac{2m^*}{\hbar^2}\dd{\mathcal{E}}\dv{f}{\mathcal{E}}
+	= -\frac{2e^2\tau\hbar^2}{(2\pi)^3{m^*}^2}E_x\int\frac{4}{3}\pi{}\qty(\frac{2m^*}{\hbar^2})^{5/2}\mathcal{E}^{3/2}\dd{\mathcal{E}}\dv{f}{\mathcal{E}}
+\end{equation}
+となる。さらに、$f$はフェルミ分布関数であるため、$\dv*{f}{\mathcal{E}} \sim -\delta(\mathcal{E}-\mathcal{E}_{F})$が成立し、
+\begin{equation}
+	j_x = \frac{2e^2\tau\hbar^2}{(2\pi)^3{m^*}^2}E_x\int\frac{2}{3}\pi{}\qty(\frac{2m^*}{\hbar^2})^{5/2}\mathcal{E}^{3/2}\dd{E}\delta(\mathcal{E}-\mathcal{E}_F)
+	= \frac{e^2\tau}{3\pi^2{m^*}}\qty(\frac{2m^*}{\hbar^2})^{3/2}\mathcal{E}_F^{3/2}E_x
+\end{equation}
+となる。フェルミエネルギー$\mathcal{E}_F$は、全粒子数$n$を用いて
+\begin{equation}
+	\mathcal{E}_F = \frac{\hbar^2}{2m^*}(3\pi^2n)^{2/3} = \frac{\hbar^2k_{F}^2}{2m^*}
+\end{equation}
+と表されるため、
+\begin{equation}
+	j_x = \frac{e^2\tau{}n}{m^*}E_x \implies \sigma = \frac{e^2\tau{}n}{m^*}
+\end{equation}
+Hall効果は
+\begin{equation}
+	\begin{dcases}
+		0 & = q\qty(E_x + v_yB_z) - \frac{m^*v_x}{\tau} \\
+		0 & = q\qty(E_y - v_xB_z) - \frac{m^*v_y}{\tau}
+	\end{dcases} \implies
+	\begin{pmatrix}
+		\frac{m^*}{\tau} & {-qB_z}            \\
+		{qB_z}           & {\frac{m^*}{\tau}}
+	\end{pmatrix}
+	\begin{pmatrix}
+		v_x \\
+		v_y
+	\end{pmatrix}
+	= \begin{pmatrix}
+		qE_x \\ qE_y
+	\end{pmatrix}
+\end{equation}
+\begin{align}
+	v_x & = \frac{q\tau/m^*}{1+(qB_z\tau/m^*)^2}\qty(E_x + \frac{qB_z\tau}{m^*}E_y) \\
+	v_y & = \frac{q\tau/m^*}{1+(qB_z\tau/m^*)^2}\qty(E_y - \frac{qB_z\tau}{m^*}E_x)
+\end{align}
+を得る。したがって、サイクロトロン各周波数$\omega_c = qB_z/m^*$を用いると、
+\begin{align}
+	j_x & = nqv_x = \frac{nq^2\tau/m^*}{1+(qB_z\tau/m^*)^2}\qty(E_x + \frac{qB_z\tau}{m^*}E_y) = \frac{\sigma}{1+\omega_c^2\tau^2}\qty(E_x + \omega_c\tau{}E_y) \\
+	j_y & = nqv_y = \frac{nq^2\tau/m^*}{1+(qB_z\tau/m^*)^2}\qty(E_y + \frac{qB_z\tau}{m^*}E_x) = \frac{\sigma}{1+\omega_c^2\tau^2}\qty(E_y - \omega_c\tau{}E_x)
+\end{align}
+温度勾配による熱流：
+$f(\bm{k},\,T)$において$\grad_{r}T\neq 0$の状況を考える。Boltzmann方程式は
+\begin{equation}
+	\pdv{f}{t} + \grad_{\bm{r}}f\vdot\dv{\bm{r}}{t} + \grad_{\bm{k}}\dv{\bm{k}}{t} = -\frac{f-f_0}{\tau}
+\end{equation}
+であるが、定常状態を考えると、
+\begin{equation}
+	f(\bm{k}) = f_0(\bm{k}) - \tau\grad_{\bm{k}}f\vdot\dv{\bm{k}}{t} - \tau\grad_{\bm{r}}f\vdot\dv{\bm{r}}{t}
+\end{equation}
+となる。ここで、
+\begin{equation}
+	\dv{\bm{k}}{t} = -\frac{e\bm{E}}{\hbar},\,\grad_{\bm{r}}f = \pdv{f}{T}\grad_{\bm{r}}T
+\end{equation}
+を代入すると、
+\begin{equation}
+	f(\bm{k}) = f_0(\bm{k}) + \frac{e}{\hbar}\tau\bm{E}\vdot\grad_{\bm{k}}f(\bm{k}) - \tau\pdv{f(\bm{k})}{T}\bm{v}\vdot\grad_{\bm{r}}T
+\end{equation}
+となる。電流の表式
+\begin{equation}
+	\bm{j} = -\frac{2}{(2\pi)^3}\int\dd{\bm{k}}e\bm{v}(\bm{k})f(\bm{k})
+\end{equation}
+に代入すると、
+\begin{equation}
+	\bm{j} = -\frac{2e}{(2\pi)^3}\int\dd{\bm{k}}\bm{v}(\bm{k})\qty[f_0(\bm{k}) + \frac{e}{\hbar}\tau\bm{E}\vdot\grad_{\bm{k}}f(\bm{k}) - \tau\pdv{f(\bm{k})}{T}\bm{v}\vdot\grad_{\bm{r}}T]
+\end{equation}
+となる。$f_0(\bm{k})$は電場が印加していないときの分布関数であるため、全積分は$0$となる。
+また、$\pdv*{T}{x}$の一次までの寄与を考える際には、右辺第三項で$f\to{}f_0$とすればよい。
 
-\end{abstract}
-\tableofcontents
-\newpage
-aa
+\begin{equation}
+	\grad_{\bm{r}}T = \mqty(\dv{T}{x} & 0 & 0),\,\bm{E}=\bm{0}
+\end{equation}
+の場合を考えると、
+\begin{equation}
+	j_x = e\int_0^{\infty}\dd{\mathcal{E}}D(\mathcal{E})\tau(\mathcal{E})\frac{v^2}{3}\pdv{f_0}{x}\pdv{T}{x}
+	\approx \frac{1}{3}e\tau_{\text{F}}v^2_{\text{F}}\int_0^{\infty}\dd{\mathcal{E}}\qty(D(\mathcal{E}_{\text{F}}) + D'(\mathcal{E_{\text{F}}}))
+	\times\frac{\exp(\frac{\mathcal{E}-\mathcal{E}_F}{k_{\text{B}}T})}{\qty[\exp(\frac{\mathcal{E}-\mathcal{E}_F}{k_{\text{B}}T}) + 1]^2}\frac{\mathcal{E}-\mathcal{E}_{\text{F}}}{k_{\text{B}}^2T}\pdv{T}{x}
+\end{equation}
+となる。なお、
+\begin{equation}
+	f_0 = \frac{1}{\exp(\frac{\mathcal{E}-\mathcal{E}_{\text{F}}}{k_{\text{B}}T})+1}
+\end{equation}
+を用いた。さらに、$D(\mathcal{E}_{\text{F}})=0$であるため、
+\begin{equation}
+	\int_0^\infty\dd{\mathcal{E}}D(\mathcal{E}_{\text{F}})=0,\quad x = \frac{\mathcal{E}-\mathcal{E}_{\text{F}}}{k_{\text{B}}T}
+\end{equation}
+とすると、
+\begin{equation}
+	j_x = \frac{1}{3}e\tau_{\text{F}}v^2_{\text{F}}D'(\mathcal{E}_{\text{F}})\pdv{T}{x}\frac{(k_{\text{B}}T)^2}{T}\int_{-\infty}^{\infty}\frac{e^xx^2}{(e^x+1)}\dd{x}
+	= \frac{\pi^2}{9}e\tau_{\text{F}}v^2_{\text{F}}D'(\mathcal{E}_{\text{F}})k^2_{\text{B}}T\pdv{T}{x} \coloneqq -\mathcal{L}^{12}\pdv{T}{x}
+\end{equation}
+となる。熱力学$Q=T\dd{S} = \dd{U}-\mu\dd{n} = \dd{U}-\mathcal{E}_{\text{F}}\dd{n}$との比較から、熱流密度は
+\begin{equation}
+	\bm{j}_{Q} = \bm{j}_{\mathcal{E}} - \mathcal{E}_{\text{F}}\bm{j}_n
+\end{equation}
+のようになると考えられる。より一般的には、交差的な項$\mathcal{L}^{12},\,\mathcal{L}^{21}$が混合して流れが求められる：
+\begin{align}
+	\bm{j}   & = \mathcal{L}^{11}\bm{E} + \mathcal{L}^{12}\qty(-\grad_{\text{r}}{T})\;, \\
+	\bm{j}_Q & = \mathcal{L}^{21}\bm{E} + \mathcal{L}^{22}\qty(-\grad_{\text{r}}{T})\;。
+\end{align}
+\begin{align*}
+	\bm{j}_Q & = \bm{j}_{\mathcal{E}}-\mathcal{E}_{\text{F}}\bm{j}_n
+	= \frac{2}{(2\pi)^3}\int\dd{\bm{k}}\mathcal{E}(\bm{k})\bm{v}(\bm{k})f(\bm{k}) - \mathcal{E}_{\text{F}}\frac{2}{(2\pi)^3}\int\dd{k}\bm{v}(\bm{k})f(\bm{k})                      \\
+	         & = \frac{2}{(2\pi)^3}\int\dd{\bm{k}}(\mathcal{E}-\mathcal{E}_{\text{F}})v(k)\qty[f_0 + \frac{e\tau}{\hbar}\bm{E}\vdot\grad_kf_0 - \tau\pdv{f}{T}\bm{v}\vdot\grad_rT]
+	= \frac{2}{(2\pi)^3}\int\dd{\bm{k}}(\mathcal{E}-\mathcal{E}_{\text{F}})v^2_x\tau\bm{v}\dv{f_0}{T}\qty(-\pdv{T}{x})
+\end{align*}
+\begin{align*}
+	j_Q & = \int\dd{\mathcal{E}}D(\mathcal{E})(\mathcal{E}-\mathcal{E}_{\text{F}})\frac{v^2\tau}{3}\frac{\exp(\frac{E-E_F}{kT})}{\qty(\exp(\frac{E-E_F}{kT})+1)^2}\frac{E-E_F}{kT^2}\qty(-\pdv{T}{x})
+	\\
+	    & =\frac{1}{3}v_F^2D(E_F)k^2T\qty(-\pdv{T}{x})\int_{-\infty}^{\infty}\frac{x^2e^2}{(e^x+1)^2}\dd{x} = \frac{1}{3}v_F^2\tau_F\qty(\frac{\pi^2}{3}D(E_F)k^2T)\qty(-\pdv{T}{x})
+	= -\frac{1}{3}v_F^2\tau_FC_V\pdv{T}{x}
+\end{align*}
+ここで、$E_F = \frac{1}{2}m^*v_F^2$と、
+\begin{equation}
+	\dv{E_F}{n} = \dv{n}\frac{\hbar^2}{2m^*}(3\pi^2n)^{2/3} = \dv{n}Cn^{2/3} = \frac{2}{3}\frac{Cn^{2/3}}{n} = \frac{2E}{3n} \implies D(E_F) = \frac{dn}{dE} = \frac{3}{2}\frac{n}{E_F}
+\end{equation}
+より、
+\begin{equation}
+	j_Q = \frac{1}{3}v_F^2\tau_F\qty(\frac{\pi^2}{3}D(E_F)k^2T)\qty(-\pdv{T}{x}) = -\lambda_E\pdv{T}{x} ,\,\lambda_E = \frac{1}{3}v_F^2\tau_F\frac{\pi^2}{2}nk\frac{kT}{m^*v_F^2/2} = \frac{n\tau\pi^2k^2T}{3m^*}
+\end{equation}
+電流が流れていないとき、$E = \mathcal{L}^{12}/\mathcal{L}^{11}\pdv{T}{x}$となり、係数をSeebeck係数と呼ぶ。ループに沿って温度一定のとき、$j_Q = \mathcal{L}^{12}/\mathcal{L}^{11}j = \Pi{}j$となり、Peltier係数と呼ぶ。
+
+有効状態密度：$\mathcal{E}-\mu\sim\SI{500}{meV} \gg kT\sim\SI{30}{meV}$のとき、フェルミ分布関数が近似できる：
+\begin{equation}
+	f = \frac{1}{e^{{(E-E_F)}/{kT}} +1} = \exp(-\frac{\mathcal{E}-\mu}{kT})
+\end{equation}
+ここで、$E = \hbar^2k^2/2m^*$より、
+\begin{equation}
+	D(E)\dd{E} = 2\times\frac{L^3}{(2\pi)^3}4\pi{}k^2\dd{k} = \frac{V}{2\pi^2}\qty(\frac{2m^*}{\hbar^2})^{3/2}E^{1/2}\dd{E}
+\end{equation}
+ゆえ、伝導帯の電子数$n_e$は、$E-\mu = E-E_c + E_c -\mu$に注意して
+\begin{equation}
+	n_e = \frac{1}{2\pi^2}\qty(\frac{2m^*_c}{\hbar^2})^{3/2}\int_{E_c}^{\infty}(E-E_c)^{1/2}\exp{-\frac{E-\mu}{kT}}\dd{E}
+\end{equation}
+$x = E-E_c/kT$として
+\begin{equation}
+	n_e = \frac{1}{2\pi^2}\qty(\frac{2m^*_c}{\hbar^2})^{3/2}(kT)^{3/2}\exp{\frac{E_c-\mu}{kT}}\Gamma(3/2) = 2\qty(\frac{m^*_ckT}{2\pi\hbar^2})^{3/2}\exp(-\frac{E_c-\mu}{kT})
+\end{equation}
+となる。真正半導体のときは$n_e=n_h$なので、かけてルート取ると$\mu$消えて簡単に計算することができる。一方で、直接比較すると$\mu$が残って
+\begin{equation}
+	\mu ~ \frac{E_c+E_V}{2} + \frac{3}{4}kT\log\qty(\frac{m^*_V}{m^*_c})
+\end{equation}
+
+
+
 
 \end{document}

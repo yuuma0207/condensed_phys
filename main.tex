@@ -411,11 +411,76 @@ Drudeモデルにおいて、磁場が印加しているときの運動方程式
 \begin{equation}
 	j_x = \frac{e^2\tau{}n}{m^*}E_x \implies \sigma = \frac{e^2\tau{}n}{m^*}
 \end{equation}
-を得る。この結果は古典的なDrudeモデルで得られる結果と一致する。
-
-
+を得る。この結果は古典的なDrudeモデルで得られる結果と一致する。なお、
+\begin{equation}
+	\rho(T) = \frac{m^*}{ne^2}\frac{1}{\tau(T)} = \frac{m^*}{ne^2}\qty(\frac{1}{\tau_{\text{ph}}} + \frac{1}{\tau_{\text{imp}}} + \frac{1}{\tau_{\text{el}}} + \cdots)
+\end{equation}
+と表される。$\tau_{\text{ph}}\propto T,\,T^5$はフォノンとの散乱を、$\tau_{\text{imp}}\propto n_{\text{imp}}$は不純物散乱を表す。
 
 
 \section{温度勾配による電流と熱流}
+$f(\bm{k},\,T)$において$\grad_{r}T\neq 0$の状況を考える。Boltzmann方程式は
+\begin{equation}
+	\pdv{f}{t} + \grad_{\bm{r}}f\vdot\dv{\bm{r}}{t} + \grad_{\bm{k}}\dv{\bm{k}}{t} = -\frac{f-f_0}{\tau}
+\end{equation}
+であるが、定常状態を考えると、
+\begin{equation}
+	f(\bm{k}) = f_0(\bm{k}) - \tau\grad_{\bm{k}}f\vdot\dv{\bm{k}}{t} - \tau\grad_{\bm{r}}f\vdot\dv{\bm{r}}{t}
+\end{equation}
+となる。ここで、
+\begin{equation}
+	\dv{\bm{k}}{t} = -\frac{e\bm{E}}{\hbar},\,\grad_{\bm{r}}f = \pdv{f}{T}\grad_{\bm{r}}T
+\end{equation}
+を代入すると、
+\begin{equation}
+	f(\bm{k}) = f_0(\bm{k}) + \frac{e}{\hbar}\tau\bm{E}\vdot\grad_{\bm{k}}f(\bm{k}) - \tau\pdv{f(\bm{k})}{T}\bm{v}\vdot\grad_{\bm{r}}T
+\end{equation}
+となる。電流の表式
+\begin{equation}
+	\bm{j} = -\frac{2}{(2\pi)^3}\int\dd{\bm{k}}e\bm{v}(\bm{k})f(\bm{k})
+\end{equation}
+に代入すると、
+\begin{equation}
+	\bm{j} = -\frac{2e}{(2\pi)^3}\int\dd{\bm{k}}\bm{v}(\bm{k})\qty[f_0(\bm{k}) + \frac{e}{\hbar}\tau\bm{E}\vdot\grad_{\bm{k}}f(\bm{k}) - \tau\pdv{f(\bm{k})}{T}\bm{v}\vdot\grad_{\bm{r}}T]
+\end{equation}
+となる。$f_0(\bm{k})$は電場が印加していないときの分布関数であるため、全積分は$0$となる。
+また、$\pdv*{T}{x}$の一次までの寄与を考える際には、右辺第三項で$f\to{}f_0$とすればよい。
+
+\begin{equation}
+	\grad_{\bm{r}}T = \mqty(\dv{T}{x} & 0 & 0),\,\bm{E}=\bm{0}
+\end{equation}
+の場合を考えると、
+\begin{equation}
+	j_x = e\int_0^{\infty}\dd{\mathcal{E}}D(\mathcal{E})\tau(\mathcal{E})\frac{v^2}{3}\pdv{f_0}{x}\pdv{T}{x}
+	\approx \frac{1}{3}e\tau_{\text{F}}v^2_{\text{F}}\int_0^{\infty}\dd{\mathcal{E}}\qty(D(\mathcal{E}_{\text{F}}) + D'(\mathcal{E_{\text{F}}}))
+	\times\frac{\exp(\frac{\mathcal{E}-\mathcal{E}_F}{k_{\text{B}}T})}{\qty[\exp(\frac{\mathcal{E}-\mathcal{E}_F}{k_{\text{B}}T}) + 1]^2}\frac{\mathcal{E}-\mathcal{E}_{\text{F}}}{k_{\text{B}}^2T}\pdv{T}{x}
+\end{equation}
+となる。なお、
+\begin{equation}
+	f_0 = \frac{1}{\exp(\frac{\mathcal{E}-\mathcal{E}_{\text{F}}}{k_{\text{B}}T})+1}
+\end{equation}
+を用いた。さらに、$D(\mathcal{E}_{\text{F}})=0$であるため、
+\begin{equation}
+	\int_0^\infty\dd{\mathcal{E}}D(\mathcal{E}_{\text{F}})=0,\quad x = \frac{\mathcal{E}-\mathcal{E}_{\text{F}}}{k_{\text{B}}T}
+\end{equation}
+とすると、
+\begin{equation}
+	j_x = \frac{1}{3}e\tau_{\text{F}}v^2_{\text{F}}D'(\mathcal{E}_{\text{F}})\pdv{T}{x}\frac{(k_{\text{B}}T)^2}{T}\int_{-\infty}^{\infty}\frac{e^xx^2}{(e^x+1)}\dd{x}
+	= \frac{\pi^2}{9}e\tau_{\text{F}}v^2_{\text{F}}D'(\mathcal{E}_{\text{F}})k^2_{\text{B}}T\pdv{T}{x} \coloneqq -\mathcal{L}^{12}\pdv{T}{x}
+\end{equation}
+となる。熱力学$Q=T\dd{S} = \dd{U}-\mu\dd{n} = \dd{U}-\mathcal{E}_{\text{F}}\dd{n}$との比較から、熱流密度は
+\begin{equation}
+	\bm{j}_{Q} = \bm{j}_{\mathcal{E}} - \mathcal{E}_{\text{F}}\bm{j}_n
+\end{equation}
+のようになると考えられる。より一般的には、交差的な項$\mathcal{L}^{12},\,\mathcal{L}^{21}$が混合して流れが求められる：
+\begin{align}
+	\bm{j}   & = \mathcal{L}^{11}\bm{E} + \mathcal{L}^{12}\qty(-\grad_{\text{r}}{T})\;, \\
+	\bm{j}_Q & = \mathcal{L}^{21}\bm{E} + \mathcal{L}^{22}\qty(-\grad_{\text{r}}{T})\;。
+\end{align}
+\begin{equation}
+	\bm{j}_Q = \bm{j}_{\mathcal{E}}-\mathcal{E}_{\text{F}}\bm{j}_n
+	= \frac{2}{(2\pi)^3}\int\dd{\bm{k}}\mathcal{E}(\bm{k})\bm{v}(\bm{k})f(\bm{k}) - \mathcal{E}_{\text{F}}\frac{2}{(2\pi)^3}\int\dd{k}\bm{v}
+\end{equation}
+
 
 \end{document}
