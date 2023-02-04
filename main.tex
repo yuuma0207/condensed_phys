@@ -1,4 +1,174 @@
-\input{~/macro.tex}
+\documentclass[a4paper,5pt,uplatex]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx,xcolor}% ドライバ指定
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry} % 余白設定
+
+\usepackage{here, subfig} % 画像
+\graphicspath{{./pic/}}
+
+\usepackage{docmute} % ファイル分割用
+
+% 表関連のパッケージ
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{arydshln} % 表で破線を使うため
+\usepackage{multicol}
+% longtableをusepackageする場合は順番が重要らしいです。longtableとarydshlnの順番逆にしたらエラーはく（コンパイルはできるが…）
+
+% 数式関連
+\usepackage{amsmath,amsfonts,amssymb,mathtools,amsthm}
+
+\usepackage{empheq} % 連立方程式をきれいに書いてくれる
+\usepackage{setspace} % 行間を変えることができる。行列に用いれば良い
+\usepackage{bm}
+\usepackage{physics}
+\usepackage[version=3]{mhchem}
+\usepackage[separate-uncertainty]{siunitx}
+%\usepackage{txfonts} % 行列のかっこの形に影響あり
+
+\usepackage{enumitem} % enumium環境いじるため
+\renewcommand{\labelenumi}{\theenumi.}
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% ------------ url関係
+\usepackage{url}
+\usepackage[dvipdfmx]{hyperref}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=red,
+	urlcolor=blue
+}
+\usepackage{pxjahyper}
+% ---------
+\usepackage{otf} % ローマ数字
+\usepackage{arydshln}% 表のダッシュを使う
+
+% 斜めのパラレル記号
+\newcommand{\varParallel}
+{\def\@varParallel{\;/\kern-.2em /\;}%
+	\mathchoice%
+	{\@varParallel}%
+	{\textstyle\@varParallel}%
+	{\scriptscriptstyle\@varParallel}%
+	{\scriptscriptstyle\@varParallel}
+}
+
+% ローマ数字のコマンド化
+\newcounter{num}
+\newcommand{\Rnum}[1]{\setcounter{num}{#1} (\Roman{num})}
+\newcommand{\rnum}[1]{\setcounter{num}{#1} (\roman{num})}
+
+% ベクトルコマンド
+\renewcommand{\v}[1]{\bm{#1}}
+
+% サブセクションの数字
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+% 目次の深さ指定
+%\setcounter{tocdepth}{1}
+
+
+% 数式番号の変更
+\makeatletter
+\@addtoreset{equation}{section}
+\def\theequation{\thesection.\arabic{equation}}% renewcommand でもOK 数式番号を1.3みたいな感じに、章.何番目 と変更
+\makeatother
+
+% -------------------
+% 作図
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc, arrows.meta}
+
+% -------------------
+% 定理環境付近
+\usepackage{tcolorbox} % 色付きの囲み
+\tcbuselibrary{breakable, skins, theorems}
+\usepackage{ascmac} % 囲み \begin{itembox}ができる。
+
+% ------ 新スタイル設定
+\newtheoremstyle{mystyle}%    % スタイル名
+{}%                       % 上部スペース
+{}%                       % 下部スペース
+{\normalfont}%           % 本文フォント
+{}%                       % インデント量
+{\bf}%                   % 見出しフォント
+{}%                       % 見出し後の句読点，'.'
+{\newline}%              % 見出し後のスペース, ' ' or \newline
+{\underline{\thmname{#1}\thmnumber{#2}\thmnote{（#3）}}}%
+%見出しの書式（can be left empty, meaning 'normal'）
+\theoremstyle{mystyle} % スタイルの適用
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{yousei}{要請}
+
+\newtheorem{mondai}{問題}
+\renewcommand{\themondai}{} % 番号なくすため
+
+\newtheorem{kaitou}{解答}
+\renewcommand{\thekaitou}{}
+
+\newtheorem{teigi}{定義}
+\renewcommand{\theteigi}{}
+\newtheorem{lemma}{補題}[section]
+\renewcommand{\proofname}{証明}
+
+% ------------proof環境をいじる
+\makeatletter %use at mark
+\renewenvironment{proof}[1][\proofname]{\par
+	\pushQED{\qed}%
+	\normalfont \topsep6\p@\@plus6\p@\relax
+	\trivlist
+	\item[\hskip\labelsep
+	            \itshape
+	            {\bf\underline{#1}}]\ignorespaces
+	% {\bf\underline{#1}\@addpunct{.}}]\ignorespaces % ピリオドあり
+}{%
+	\popQED\endtrivlist\@endperfalse
+}
+\makeatother %end at mark
+
+% ----------
+
+% プログラムコードの挿入
+\usepackage{listings, jlisting}
+
+\lstset{
+	%プログラム言語(複数の言語に対応，C,C++も可)
+	language = {C},
+	%背景色と透過度
+	backgroundcolor={\color[gray]{.90}},
+	%枠外に行った時の自動改行
+	breaklines = true,
+	%自動改行後のインデント量(デフォルトでは20[pt])
+	breakindent = 10pt,
+	%標準の書体
+	basicstyle = {\ttfamily\scriptsize},
+	%コメントの書体
+	commentstyle = {\itshape \color[rgb]{0,0.5,0}},
+	%関数名等の色の設定
+	classoffset = 0,
+	%キーワード(int, ifなど)の書体
+	keywordstyle = {\bfseries \color[rgb]{1,0,0}},
+	%""で囲まれたなどの"文字"の書体
+	stringstyle = {\ttfamily \color[rgb]{0,0,1}},
+	%枠 "t"は上に線を記載, "T"は上に二重線を記載
+	%他オプション: leftline, topline, bottomline, lines, single, shadowbox
+	frame = tbrl,
+	%frameまでの間隔(行番号とプログラムの間)
+	framesep = 5pt,
+	%行番号の位置
+	numbers = left,
+	%行番号の間隔
+	stepnumber = 1,
+	%行番号の書体
+	numberstyle = \tiny,
+	%タブの大きさ
+	tabsize = 4,
+	%キャプションの場所("tb"ならば上下両方に記載)
+	captionpos = t
+}
 \usepackage{nicematrix,nccmath}
 \title{物性物理学}
 \author{20B01392 松本侑真}
@@ -103,6 +273,63 @@ Drudeモデルで導かれる電流は、伝導度$\sigma$、抵抗率$\rho$と�
 	\bm{j} = -ne\bm{v}_d = ne\frac{e\tau}{m^*}\bm{E} = \frac{ne^2\tau}{m^*}\bm{E} = \sigma\bm{E} = \frac{1}{\rho}\bm{E}
 \end{equation}
 と表される。
+
+\section{Hall効果}
+Drudeモデルにおいて、磁場が印加しているときの運動方程式は
+\begin{equation}
+	m^*\dv{\bm{v}}{t} = q\qty(\bm{E} + \bm{v}\cross\bm{B}) -\frac{m^*}{\tau}\bm{v}
+\end{equation}
+となる。$\bm{E} = \mqty(E_x & E_y & 0),\,\bm{B} = \mqty(0 & 0 & B_z)$とする。定常状態では
+\begin{equation}
+	\begin{dcases}
+		0 & = q\qty(E_x + v_yB_z) - \frac{m^*v_x}{\tau} \\
+		0 & = q\qty(E_y - v_xB_z) - \frac{m^*v_y}{\tau}
+	\end{dcases} \implies
+	\begin{pmatrix}
+		\frac{m^*}{\tau} & {-qB_z}            \\
+		{qB_z}           & {\frac{m^*}{\tau}}
+	\end{pmatrix}
+	\begin{pmatrix}
+		v_x \\
+		v_y
+	\end{pmatrix}
+	= \begin{pmatrix}
+		qE_x \\ qE_y
+	\end{pmatrix}
+\end{equation}
+となる。これを計算すると、
+\begin{equation}
+	\begin{pmatrix}
+		v_x \\ v_y
+	\end{pmatrix}
+	=\frac{q\tau/m^*}{1 + (qB_z\tau/m^*)^2}
+	\begin{pmatrix}
+		1             & qB_z\tau/m^* \\
+		-qB_z\tau/m^* & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+		E_x \\ E_y
+	\end{pmatrix}
+\end{equation}
+となるため、
+\begin{align}
+	v_x & = \frac{q\tau/m^*}{1+(qB_z\tau/m^*)^2}\qty(E_x + \frac{qB_z\tau}{m^*}E_y) \\
+	v_y & = \frac{q\tau/m^*}{1+(qB_z\tau/m^*)^2}\qty(E_y - \frac{qB_z\tau}{m^*}E_x)
+\end{align}
+を得る。したがって、サイクロトロン各周波数$\omega_c = qB_z/m^*$を用いると、
+\begin{align}
+	j_x & = nqv_x = \frac{nq^2\tau/m^*}{1+(qB_z\tau/m^*)^2}\qty(E_x + \frac{qB_z\tau}{m^*}E_y) = \frac{\sigma}{1+\omega_c^2\tau^2}\qty(E_x + \omega_c\tau{}E_y) \\
+	j_y & = nqv_y = \frac{nq^2\tau/m^*}{1+(qB_z\tau/m^*)^2}\qty(E_y + \frac{qB_z\tau}{m^*}E_x) = \frac{\sigma}{1+\omega_c^2\tau^2}\qty(E_y - \omega_c\tau{}E_x)
+\end{align}
+となる。$j_y=0$のとき、$E_y = \omega\tau{}E_x$であるため、
+\begin{equation}
+	j_x = \frac{\sigma}{1+\omega_c^2\tau^2}\qty(E_x + \omega_c^2\tau{}^2E_x) = \sigma{}E_x
+\end{equation}
+であり、Hall係数$R_{\text{H}}$は、
+\begin{equation}
+	R_{\text{H}} = \frac{E_y}{j_xB_z} = \frac{\omega_c{}\tau{}E_x}{\sigma{}E_xB_z} = \frac{qB_z}{m^*}\tau\frac{m^*}{nq^2\tau}\frac{1}{B_z} = \frac{1}{nq}
+\end{equation}
+である。
 
 \section{Boltzmann方程式：電子の速度分布を考慮して計算する}
 古典的モデルであるDruleモデルでは、全ての電子が同じ速度$\bm{v}_d$で固体中を移動していると考えたが、

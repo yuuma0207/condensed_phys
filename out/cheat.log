@@ -1,10 +1,10 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  4 FEB 2023 08:48
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  31 JAN 2023 10:30
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**cheat.tex
+(./cheat.tex
 pLaTeX2e <2021-11-15u04> (based on LaTeX2e <2022-11-01>)
 L3 programming layer <2022-11-02> (/usr/local/texlive/2022/texmf-dist/tex/plate
 x/jsclasses/jsarticle.cls
@@ -1082,108 +1082,42 @@ Package: jlisting 2006/02/20 0.2 (Thor)
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/nicematrix/nicematrix.sty
-Package: nicematrix 2022/11/15 v6.13c Enhanced arrays with the help of PGF/TikZ
-
-\g__nicematrix_env_int=\count404
-\g__nicematrix_NiceMatrixBlock_int=\count405
-\l__nicematrix_note_in_caption_int=\count406
-\l__nicematrix_columns_width_dim=\dimen378
-\l__nicematrix_col_width_dim=\dimen379
-\g__nicematrix_row_total_int=\count407
-\g__nicematrix_col_total_int=\count408
-\g__nicematrix_last_row_node_int=\count409
-\l__nicematrix_key_nb_rows_int=\count410
-\g__nicematrix_blocks_wd_dim=\dimen380
-\g__nicematrix_blocks_ht_dim=\dimen381
-\g__nicematrix_blocks_dp_dim=\dimen382
-\l__nicematrix_width_dim=\dimen383
-\l__nicematrix_tabular_width_dim=\dimen384
-\l__nicematrix_rule_width_dim=\dimen385
-\l__nicematrix_old_iRow_int=\count411
-\l__nicematrix_old_jCol_int=\count412
-\g__nicematrix_total_X_weight_int=\count413
-\l__nicematrix_X_columns_dim=\dimen386
-\l__nicematrix_x_initial_dim=\dimen387
-\l__nicematrix_y_initial_dim=\dimen388
-\l__nicematrix_x_final_dim=\dimen389
-\l__nicematrix_y_final_dim=\dimen390
-\l__nicematrix_tmpc_dim=\dimen391
-\l__nicematrix_tmpd_dim=\dimen392
-\g__nicematrix_width_last_col_dim=\dimen393
-\g__nicematrix_width_first_col_dim=\dimen394
-\l__nicematrix_row_min_int=\count414
-\l__nicematrix_row_max_int=\count415
-\l__nicematrix_col_min_int=\count416
-\l__nicematrix_col_max_int=\count417
-\g__nicematrix_static_num_of_col_int=\count418
-\l__nicematrix_rounded_corners_dim=\dimen395
-\l__nicematrix_line_width_dim=\dimen396
-\g__nicematrix_block_box_int=\count419
-\l__nicematrix_submatrix_extra_height_dim=\dimen397
-\l__nicematrix_submatrix_left_xshift_dim=\dimen398
-\l__nicematrix_submatrix_right_xshift_dim=\dimen399
-\l__nicematrix_first_row_int=\count420
-\l__nicematrix_first_col_int=\count421
-\l__nicematrix_last_row_int=\count422
-\l__nicematrix_last_col_int=\count423
-\c@tabularnote=\count424
-\c@nicematrix_draft=\count425
-\l__nicematrix_cell_space_top_limit_dim=\dimen400
-\l__nicematrix_cell_space_bottom_limit_dim=\dimen401
-\l__nicematrix_xdots_inter_dim=\dimen402
-\l__nicematrix_xdots_shorten_start_dim=\dimen403
-\l__nicematrix_xdots_shorten_end_dim=\dimen404
-\l__nicematrix_xdots_radius_dim=\dimen405
-\l__nicematrix_notes_above_space_dim=\dimen406
-\l__nicematrix_left_margin_dim=\dimen407
-\l__nicematrix_right_margin_dim=\dimen408
-\l__nicematrix_extra_left_margin_dim=\dimen409
-\l__nicematrix_extra_right_margin_dim=\dimen410
-\c__nicematrix_max_l_dim=\dimen411
-\l__nicematrix_position_int=\count426
-\l__nicematrix_start_int=\count427
-\l__nicematrix_multiplicity_int=\count428
-\l__nicematrix_brace_yshift_dim=\dimen412
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/ncctools/nccmath.sty
-Package: nccmath 2006/01/20 v1.3 Additional Math Commands (NCC)
-\NCC@fracrulewidth=\dimen413
 )
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 176.
+h' as default language. on input line 175.
 LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 176.
+(Font)              scaled to size 9.24683pt on input line 175.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 176.
+(Font)              scaled to size 9.24683pt on input line 175.
 
 LaTeX Warning: Unused global option(s):
     [5pt].
 
-(out/main.aux)
-\openout1 = `main.aux'.
+(out/cheat.aux)
+\openout1 = `cheat.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 176.
-LaTeX Font Info:    ... okay on input line 176.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
 *geometry* verbose mode - [ preamble ] result:
@@ -1228,7 +1162,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 
-Package chemgreek Info: Activating mapping `default' on line 176.
+Package chemgreek Info: Activating mapping `default' on line 175.
 
 
 Package siunitx Warning: Detected the "physics" package:
@@ -1248,132 +1182,79 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 176.
-Package hyperref Info: Link coloring ON on input line 176.
-(out/main.out) (out/main.out)
+or `english'. on input line 175.
+Package hyperref Info: Link coloring ON on input line 175.
+(out/cheat.out) (out/cheat.out)
 \@outlinefile=\write4
-\openout4 = `main.out'.
+\openout4 = `cheat.out'.
 
-\c@lstlisting=\count429
+\c@lstlisting=\count404
+\docmute@nestinglevel=\count405
+LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
+(Font)              scaled to size 15.9785pt on input line 177.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 6.47278pt on input line 176.
+(Font)              scaled to size 15.9785pt on input line 177.
+LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
+(Font)              scaled to size 11.09619pt on input line 177.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 176.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 176
+(Font)              scaled to size 11.09619pt on input line 177.
+LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
+(Font)              scaled to size 7.39746pt on input line 177.
+LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
+(Font)              scaled to size 5.5481pt on input line 177.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 177
 .
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 176
+LaTeX Font Info:    Trying to load font information for U+msb on input line 177
 .
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 176.
+(Font)              scaled to size 11.09619pt on input line 177.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 6.47278pt on input line 176.
+(Font)              scaled to size 7.39746pt on input line 177.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 176.
-\c@tabularnotesi=\count430
-\enitdp@tabularnotes=\count431
-\c@tabularnotes*i=\count432
-\enitdp@tabularnotes*=\count433
-\docmute@nestinglevel=\count434
+(Font)              scaled to size 5.5481pt on input line 177.
 LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 15.9785pt on input line 178.
+(Font)              scaled to size 8.32214pt on input line 177.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 15.9785pt on input line 178.
-LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 178.
-LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 178.
-LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 7.39746pt on input line 178.
-LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 178.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 178.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 7.39746pt on input line 178.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 178.
-LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 8.32214pt on input line 178.
-LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 8.32214pt on input line 178.
+(Font)              scaled to size 8.32214pt on input line 177.
 LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 8.32214pt on input line 178.
+(Font)              scaled to size 8.32214pt on input line 177.
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 8.32214pt on input line 178.
+(Font)              scaled to size 8.32214pt on input line 177.
 LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 181.
+(Font)              scaled to size 9.24683pt on input line 180.
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 181.
+(Font)              scaled to size 9.24683pt on input line 180.
 LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 181.
+(Font)              scaled to size 13.31541pt on input line 180.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 181.
+(Font)              scaled to size 13.31541pt on input line 180.
 LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 181.
+(Font)              scaled to size 13.31541pt on input line 180.
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 181.
-(out/main.toc)
+(Font)              scaled to size 13.31541pt on input line 180.
+(out/cheat.toc)
 \tf@toc=\write5
-\openout5 = `main.toc'.
+\openout5 = `cheat.toc'.
 
 [1
 
-]
-LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 202.
-LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 202.
-[2]
-\g__nicematrix_max_cell_width_dim=\dimen414
-\c@iRow=\count435
-\c@jCol=\count436
-\l__nicematrix_cell_box=\box175
-\l__nicematrix_the_array_box=\box176
-\l__nicematrix_left_delim_dim=\dimen415
-\l__nicematrix_right_delim_dim=\dimen416
-\g__nicematrix_dp_row_zero_dim=\dimen417
-\g__nicematrix_ht_row_zero_dim=\dimen418
-\g__nicematrix_ht_row_one_dim=\dimen419
-\g__nicematrix_dp_ante_last_row_dim=\dimen420
-\g__nicematrix_ht_last_row_dim=\dimen421
-\g__nicematrix_dp_last_row_dim=\dimen422
-LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 7.39746pt on input line 251.
-\g__nicematrix_ddots_int=\count437
-\g__nicematrix_iddots_int=\count438
-\g__nicematrix_delta_x_one_dim=\dimen423
-\g__nicematrix_delta_y_one_dim=\dimen424
-\g__nicematrix_delta_x_two_dim=\dimen425
-\g__nicematrix_delta_y_two_dim=\dimen426
-\l__nicematrix_initial_i_int=\count439
-\l__nicematrix_initial_j_int=\count440
-\l__nicematrix_final_i_int=\count441
-\l__nicematrix_final_j_int=\count442
-[3]
-LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 6.47278pt on input line 328.
-LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 328.
-[4]
-LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 380.
-[5] [6] (out/main.aux)
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1D5D16114D389D51C72D037776A5E175;1113.
+] [2] (out/cheat.aux)
+Package rerunfilecheck Info: File `cheat.out' has not changed.
+(rerunfilecheck)             Checksum: 05B9FF7757FE6A446D8F294B02146D28;54.
  ) 
 Here is how much of TeX's memory you used:
- 40532 strings out of 475422
- 852968 string characters out of 5788032
- 1330618 words of memory out of 5000000
- 61694 multiletter control sequences out of 15000+600000
- 522605 words of font info for 136 fonts, out of 8000000 for 9000
+ 38084 strings out of 475422
+ 773306 string characters out of 5788032
+ 1301620 words of memory out of 5000000
+ 59263 multiletter control sequences out of 15000+600000
+ 516122 words of font info for 107 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 84i,16n,80p,452b,1254s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,6n,80p,453b,1246s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/main.dvi (6 pages, 43744 bytes).
+Output written on out/cheat.dvi (2 pages, 1816 bytes).
