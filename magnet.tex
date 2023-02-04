@@ -6,8 +6,196 @@
 \maketitle
 \tableofcontents
 \newpage
+\section{固体中の磁気モーメント}
+\begin{itemize}
+	\item 電子の軌道角運動量によるもの：
+	      \begin{equation}
+		      \bm{m} = -\frac{e}{2m}\bm{l},\,\mu_B = \frac{e\hbar}{2m},\,g_J = -\frac{\bm{m}/\mu_B}{\bm{l}/\hbar} \implies \bm{m} = -g_J\mu_B\frac{\bm{l}}{\hbar}\quad\text{ただし$g_J=1$}
+	      \end{equation}
+	\item 電子のスピンによるもの：
+	      \begin{equation}
+		      \bm{m}_s = -g_s\mu_B\frac{\bm{s}}{\hbar}\quad\text{ただし$g_s=2$}
+	      \end{equation}
+	\item 核子のスピンによるもの：
+	      \begin{equation}
+		      \bm{m}_N = -g_N\mu_B\frac{\bm{I}}{\hbar}\quad\text{$g_N\ll g_J$なので主役ではない。}
+	      \end{equation}
+	\item 磁化は$\bm{M} = \sum_i \bm{m}_i/\Delta{V}$と表される。磁化電流密度は$\bm{j}_M = \curl{\bm{M}}$と表されるため、$\bm{B}$は以下になる。
+	      \begin{equation*}
+		      \curl{\bm{B}} = \mu_0(\bm{j} + \bm{j}_M) = \mu_0\bm{j} + \mu_0\curl{\bm{M}}\implies \curl(\bm{B}-\mu_0\curl{\bm{M}}) = \mu_0\bm{j} = \mu_0\curl{\bm{H}}
+		      \implies \bm{B} = \mu_0\qty(\bm{H} + \bm{M})\;。
+	      \end{equation*}
+	\item 磁化率$\chi_m$は$\chi_m = \pdv*{M}{H}$と定義される。よって、$\bm{B} = (1+\chi_m)\mu_0\bm{H}$となる。
+\end{itemize}
+\section{原子のイオンの磁気モーメント}
+原子やイオンは複数の電子を持つため、全角運動量$\bm{J}$とすると、全磁気モーメントは
+\begin{equation}
+	\bm{m} = \bm{m}_l +\bm{m}_s = -g_l\mu_B\frac{\bm{L}}{\hbar} - g_s\mu_B\frac{\bm{S}}{\hbar} = -\frac{\mu_B}{\hbar}\qty(\bm{L} + 2\bm{S})
+\end{equation}
+となる。$\bm{m}$の$\bm{J} = \bm{L}+\bm{S}$方向の射影を行うと、$2\bm{L}\vdot\bm{S} = J^2-L^2-S^2$より
+\begin{equation}
+	\qty(\bm{L} + \bm{S})\qty(\bm{L} + 2\bm{S}) = L^2 + 3\bm{L}\vdot\bm{S} + 2S^2 = \frac{3}{2}J^2-\frac{1}{2}L^2+\frac{1}{2}S^2
+\end{equation}
+となる。$\bm{L}+2\bm{S} = g_J\bm{J}$とおきたいので、$g_J$は次のように求まる：
+\begin{equation}
+	g_J = \frac{3}{2} + \frac{S^2-L^2}{2J^2} \implies \frac{3}{2} + \frac{s(s+1) - l(l+1)}{2j(j+1)}\;。
+\end{equation}
+例えば水素原子の場合、電子は1s軌道にいるため、$S = 1/2,\,L = 0,\,J=1/2\implies g_J = 2/3+1/2=2$となる。
+\ce{Fe^{2+}}イオンの場合、$Z=26$なので、3d軌道の$l_z=2$に上下スピン、他の$l$は上スピンのみがいるため、$S=2,\,L=2,\,J=4\implies g_J = 3/2$となる。
+\section{磁気的相互作用のない多電子系の磁性}
+磁場$\bm{B}$中で、スピン磁気モーメント$\bm{m}_s$は$U=-\bm{m}_s\vdot\bm{B} = g_s\mu_B\bm{S}\vdot\bm{B}/\hbar = 2\mu_B\bm{S}\vdot\bm{B}/\hbar$より、
+\begin{equation}
+	H = \sum_{i=1}^N \frac{1}{2m_i}\qty(p_i + qA(r_i))^2 + 2\mu_B\frac{1}{\hbar}\sum_{i=1}^N\bm{S}_{i}\vdot\bm{B} + \frac{1}{2}\sum_{i\neq j}\frac{e^2}{\abs{\bm{r}_i-\bm{r}_j}}
+\end{equation}
+となる。摂動ハミルトニアンは
+\begin{equation}
+	H' = \sum\frac{e}{2m_i}\qty(\bm{p}\vdot\bm{A} + \bm{A}\vdot\bm{p}) + \sum\frac{e^2}{2m}A^2 + 2\mu_B\frac{1}{\hbar}\sum_{i=1}^N\bm{S}_{i}\vdot\bm{B}
+\end{equation}
+であり、対称ゲージを採用して計算すると
+\begin{equation}
+	H' = \frac{\mu_B}{\hbar}\bm{B}\vdot\qty(\bm{L} + 2\bm{S}) + \sum_i\frac{e^2}{8m}\qty(\bm{B}\cross\bm{r}_i)^2
+\end{equation}
+となる。$B^2$の項までの摂動を計算すると、
+\begin{equation}
+	\varDelta E = \ev{\frac{\mu_B}{\hbar}\bm{B}\vdot\qty(\bm{L} + 2\bm{S})}{\Psi_0}
+	+ \sum_{n\neq 0}\frac{\abs{\mel{\Psi_n}{\frac{\mu_B}{\hbar}\bm{B}\vdot\qty(\bm{L} + 2\bm{S})}{\Psi_0}}^2}{E_0-E_n}
+	+\sum_{i=1}^n\ev{\frac{e^2}{8m}\qty(\bm{B}\cross\bm{r}_i)^2}{\Psi_0}
+\end{equation}
+となり、右辺はそれぞれ軌道・スピン角運動量による磁気モーメントのゼーマン項、ヴァン・ヴァレック常磁性、ラーモア反磁性である。$E_0-E_n<0$に注意。
+\section{磁化の熱力学}
+誘導電場$\bm{E}$が発生しているとき、物体が外部にする仕事は、$n(e\bm{E}\vdot\bm{v}) = \bm{E}\vdot\bm{j}$であるため、
+\begin{equation}
+	\dd{W} = \dd{t}\int_V \qty(\bm{j}\vdot\bm{E})\dd{\bm{r}} = -\dd{t}\int_V\qty{\qty(\curl{\bm{H}})\vdot\bm{E}}\dd{\bm{r}}
+\end{equation}
+となる。$\div(\bm{A}\cross\bm{B}) = \bm{B}\vdot\qty(\curl{\bm{A}}) - \bm{A}\vdot\qty(\curl{B})$より
+\begin{equation}
+	\dd{W} = -\dd{t}\int_V\div(\bm{H}\cross\bm{E})\dd{\bm{r}} - \dd{t}\int_V\bm{H}\vdot\qty(\curl{E})\dd{r}
+	=  -\dd{t}\int_S(\bm{H}\cross\bm{E})\vdot\dd{S} +\dd{t}\int_V \qty(\bm{H}\vdot\pdv{\bm{B}}{t})\dd{r}
+\end{equation}
+したがって、右辺第二項のみが残り、内部エネルギーの変化は、$\dd{B} = \dd{M}$
+\begin{equation}
+	\dd{U} = T\dd{S} - P\dd{V} + \int\qty(\bm{H}\vdot\dd{\bm{M}})\dd{\bm{r}} = T\dd{S} - P\dd{V} + \qty(\bm{H}\vdot\dd{\bm{M}})V
+\end{equation}
+となる。Gibbsの自由エネルギーから、$\dd{G} = -S\dd{T} - \qty(\bm{H}\vdot\dd{\bm{M}})V$となるため、
+\begin{equation}
+	M = -\frac{1}{V}\pdv{G}{H}\implies \chi_m = \pdv{M}{H} = -\frac{1}{V}\pdv[2]{G}{H} \implies \varDelta E > 0\rightarrow \chi_m< 0\quad\text{（反磁性）}
+\end{equation}
+\section{ラーモア反磁性}
+閉殻原子の場合、$\bm{L}=\bm{S}=\bm{0}$なので、$\varDelta E = \sum_{i=1}^Ne^2\ev{\qty(\bm{B}\cross\bm{r}_i)^2}{\Psi_0}/8m$となる。$\bm{B}\varParallel\bm{z}$とすると、
+\begin{equation}
+	\varDelta E = \sum_{i=1}^N\frac{e^2B^2}{8m}\ev{x_i^2+y_i^2}{\Psi_0} = \frac{e^2B^2}{12m}\sum_{i=1}^N\ev{r_i^2}
+	\approx \frac{e^2B^2}{12m}ZNV\ev{r^2} = ZNV\frac{e^2}{12m}\ev{r^2}\mu_0^2H^2
+\end{equation}
+となる。ここで、$\chi\ll 1$を用いた。したがって、熱力学的な$\chi_m$の式に代入すると、ラーモア反磁性は磁化率が負になっており、反磁性を示すことがわかる。
 
+\section{局在磁気モーメントを持つ固体の常磁性（ランジュバン常磁性）}
+単位体積あたりN個の$J=1/2,\,L=0,\,S=1/2$の原子からなる固体を考える。個々の原子における$J_z = \mp{}g_j\mu_B/2=\mp\mu_B$より、
+Zeeman分裂によるエネルギーは$\mathcal{E} = \pm\mu_BB$となる。統計力学により
+\begin{equation}
+	P_{\pm1/2} = \frac{\exp(\mathcal{E}_{\pm1/2}/kT)}{\exp(\mathcal{E}_{+1/2}/kT) + \exp(\mathcal{E}_{-1/2}/kT)}
+\end{equation}
+となる。したがって、
+\begin{equation}
+	M = \qty(-\frac{1}{2}g_j\mu_B)NP_{+1/2} + \qty(\frac{1}{2}g_j\mu_B)NP_{-1/2} = \frac{1}{2}Ng_J\mu_B\tanh(\frac{g_J\mu_BB}{2kT})
+\end{equation}
+\begin{equation}
+	\tanh{x}=\begin{cases}
+		x\quad(x\ll 1) \\
+		1\quad(x\to\infty)
+	\end{cases}
+\end{equation}
+より、$x$が小さいときは
+\begin{equation}
+	M = \frac{Ng_J^2\mu_B^2}{4kT}B\approx \frac{Ng_J^2\mu_B^2}{4kT}\mu_0H\implies \chi_m = \frac{Ng_J^2}{4kT}\mu_0 \propto \frac{1}{T}\quad(\text{Curieの法則})
+\end{equation}
+一般の$J$の場合は
+\begin{equation}
+	\begin{cases}
+		J_z         & = j\hbar,\,(j-1)\hbar,\,\cdots,\,-(j-1)\hbar,\,-j\hbar               \\
+		m_z         & = -jg_J\mu_B,\,-(j-1)g_J\mu_B,,\,\cdots,\,(j-1)g_J\mu_B,,\,jg_J\mu_B \\
+		\mathcal{E} & = jg_J\mu_BB,\,\cdots,\,-jg_J\mu_BB
+	\end{cases}
+\end{equation}
+となる。
+\begin{equation}
+	P_n = \frac{\exp(-\frac{\mathcal{E}_n}{kT})}{\sum_i\exp(-\frac{\mathcal{E}_i}{kT})}
+\end{equation}
+より、
+\begin{equation}
+	M = \sum_{n=-j}^j(-jg_J\mu_B)NP_n = Njg_J\mu_BB_J\qty(\frac{jg_J\mu_BB}{kT})
+\end{equation}
+となる。なお、$B_J(x)$はブリルアン関数である。
+\section{強磁性}
+スピンスピン相互作用（交換相互作用）がある場合のハミルトニアンは$H = -2J_{ab}\bm{S}_a\vdot\bm{S}_b$となる。平均場近似をすると、$i$番目のスピンのエネルギーは
+\begin{equation}
+	\mathcal{E}_i = -\sum_{j\neq i}2J_{ij}\bm{S}_i\vdot\bm{S}_j + g\mu_B\frac{1}{\hbar}\bm{S}_i\vdot\bm{B},\quad\ev{S} = \frac{1}{N}\sum_{j=1}^N\bm{S}_j
+\end{equation}
+より、最近接サイト数を$Z$とすると
+\begin{equation}
+	\mathcal{E}_i \approx -2ZJ_{ex}\ev{S_z}S_{iz} + g\mu_B\frac{1}{\hbar}S_{iz}B = g\mu_B\qty(B-\frac{2ZJ_{ex}}{g\mu_B}\ev{S_z}\hbar)\frac{S_{iz}}\hbar{}
+\end{equation}
+となる。一方で、この系の磁化$M$は
+\begin{equation}
+	M = -Ng_J\mu_B\frac{1}{\hbar}\ev{S_z}
+\end{equation}
+より、
+\begin{equation}
+	\mathcal{E}_i = g\mu_B\qty(B-\frac{2ZJ_{ex}\hbar^2}{Ng_J^2\mu_B^2}M)\frac{S_{iz}}{\hbar} = g\mu_B\qty(B+\lambda{}M)\frac{S_{iz}}{\hbar}
+\end{equation}
+となる。$\lambda$を分子場係数と呼ぶ。$S=1/2$の場合、$S_{iz}=\hbar/2$より、
+\begin{equation}
+	M = -g_JN\mu_B\frac{\ev{S_z}}{\hbar} = -gN\mu_B\frac{1}{\hbar}\qty(\frac{\hbar}{2}P_{+1/2} - \frac{\hbar}{2}P_{-1/2}) = \frac{1}{2}Ng\mu_B\tanh\qty(\frac{g\mu_B(B+\lambda{}M)}{2kT})
+\end{equation}
+とくに$\bm{B}=\bm{0}$のとき、直線と$\tanh$の曲線の傾きが一致する場所がキュリー温度となる。ここで、$T>T_c$での磁化率を考えると、
+\begin{equation}
+	\chi_m = \frac{C}{T},\,M = \chi_mH = \chi_m\frac{B_{eff}}{\mu_0} ,\,B_{eff} = B + \lambda{}M
+\end{equation}
+とおいて、磁場が印加されている場合、
+\begin{equation}
+	M = \frac{C}{T-C\lambda/\mu_0}H \implies \chi_m =  \frac{C}{T-T_c}
+\end{equation}
+\section{ランダウ理論}
+強磁性体のエネルギーは、磁化の符号によらないため、自由エネルギー密度は
+\begin{equation}
+	f(T,\,M) = f_0(T) + \frac{a}{2}M^2 + \frac{b}{4}M^2+\cdots
+\end{equation}
+と展開できる。
+\begin{equation}
+	\dd{f} = -S\dd{T} + H\dd{M}\implies H = \pdv{f}{M} = (a+bM^2)M
+\end{equation}
+となり、強磁性体は$T<T_c$のとき$H=0\wedge{}M\neq 0$ゆえ$a+bM^2=0\implies M = \sqrt{-\frac{a}{b}}\quad(a<0,\,b>0)$となる。
+$T>T_c$では$a>0$で常磁性の性質($M\propto{}H$)を持つため、
+\begin{equation}
+	a = \alpha(T-T_c)
+\end{equation}
+と置けばいい。$T=T_c$で相転移が生じるが、
+\begin{equation}
+	S(T) = -\pdv{f}{T} = -\pdv{f_0}{T} - \frac{\alpha}{2}M^2 =
+	\begin{dcases}
+		S_0(T) \quad                            & (T>T_c) \\
+		S_0(T) -\frac{\alpha^2}{2b}(T_c-T)\quad & (T<T_c)
+	\end{dcases}
+\end{equation}
+比熱は$C_P(T) = T\pdv*{S}{T}$で求まる。つまり、二次の相転移である。
 
-
+平均場近似で取りこぼしている例として、スピン波励起というものがある。第一励起状態はスピンが1つだけ反転するのではなく、位相が少しずつずれた状態の方がエネルギーが小さい。
+余弦定理を使うと、軸からの角度$\theta$と歳差の位相差$\delta$には
+\begin{equation}
+	\cos\delta = 1-2\sin^2\theta\sin^2\frac{\varphi}{2}
+\end{equation}
+の関係がある。磁気モーメントの変化量は
+\begin{equation}
+	Ng\mu_BS(1-\cos\theta) = g\mu_B\times{\text{整数}}
+\end{equation}
+となり、最低励起状態では整数は$1$となる。$\theta$に対するマクローリン展開を行うと、$\theta^2 = 2/NS$と求まる。
+\begin{equation}
+	\varDelta E = -2JS^2\cos\delta - (-2JS^2) = 2JNS^2(1-\cos\delta) = 4NJS^2\sin^2\theta\sin^2\frac{\varphi}{2} = 4NJS^2\sin^2\sqrt\frac{2}{NS}\sin^2\frac{\varphi}{2}
+\end{equation}
+となる。スピン間距離$a$と、波長$\lambda$に対して$\lambda\varphi/a = 2\pi$が成立するため、
+\begin{equation}
+	\varDelta E = 8JS\sin^2\frac{ak}{2}
+\end{equation}
+と計算できる。
+\section{反強磁性}
 
 \end{document}
