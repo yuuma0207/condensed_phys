@@ -197,5 +197,37 @@ $T>T_c$では$a>0$で常磁性の性質($M\propto{}H$)を持つため、
 \end{equation}
 と計算できる。
 \section{反強磁性}
-
+Aサイトを上スピンの副格子、Bサイトを下スピンの副格子とする。各サイトの平均場は
+\begin{align}
+	B_A & = B + \lambda_{AA}M_A - \lambda_{AB}M_B \\
+	B_B & = B - \lambda_{BA}M_A + \lambda_{BB}M_B
+\end{align}
+とおける。ここで、$\lambda_{AA}=\lambda_{BB} = \alpha,\,\lambda_{AB} = \lambda_{BA} = \gamma$とおく。
+$B=0$のとき、サイトAとBは同等であるため、$M_A=-M_B$となるはずである。したがって、
+\begin{equation}
+	B_A=(\alpha+\gamma)M_B
+\end{equation}
+を得る。これを平均場の磁化の式に代入すると、
+\begin{equation}
+	M=NJg_J\mu_BB_J\qty(\frac{Jg_J\mu_B\lambda{}M}{kT})\implies M_A = NSg_s\mu_BB_J\qty(\frac{Jg_J\mu_B(\alpha+\gamma)M_A}{kT})
+\end{equation}
+となる。したがって、$\lambda\leftrightarrow\alpha+\gamma,\,J\leftrightarrow S$の置き換えで計算できる。
+また、
+\begin{equation}
+	T_N = \frac{NJ(J+1)g^2\mu_B^2(\alpha+\gamma)}{3k}
+\end{equation}
+をネール温度とよび、反強磁性から常磁性転移温度が$T_N$である。しかし、キュリーワイス則に対応する温度は$T_N$でないことに注意。
+すなわち、$T>T_N$では$M_A=M_B$であるため、$B_A = (\alpha-\gamma)M_A$であることに注意すると、
+\begin{equation}
+	\chi_m = \frac{C'}{T}\implies M_A = \chi_mH = \frac{C'}{\mu_0T}\qty{B+(\alpha-\gamma)M_A}
+\end{equation}
+となる。これを解くと
+\begin{equation}
+	M_A = \frac{C'}{T+\frac{C'(\gamma-\alpha)}{\mu_0}}H \implies \chi_m = \frac{C'}{T+\Theta}
+\end{equation}
+ただし、
+\begin{equation}
+	\Theta = \frac{C'(\gamma-\gamma)}{\mu_0}\neq T_N
+\end{equation}
+である。
 \end{document}
