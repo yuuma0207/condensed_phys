@@ -1423,3 +1423,6 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/uptex-fonts/jis/upjisg-h.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/japanese-otf/upnmlminr-v.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/japanese-otf/upnmlminr-v.tfm
+INPUT out/magnet.aux
+INPUT out/magnet.out
+INPUT out/magnet.out
