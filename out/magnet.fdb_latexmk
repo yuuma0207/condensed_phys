@@ -1,0 +1,6 @@
+# Fdb version 4
+["dvipdf"] 0 "out/magnet.dvi" "out/magnet.pdf" "out/magnet" 0 -1
+  "out/magnet.dvi" 0 -1 0 "latex"
+  (generated)
+  "out/magnet.pdf"
+  (rewritten before read)
